@@ -1,0 +1,19 @@
+@startuml django-tutorial-polls-erdiagram
+entity "polls_question" {
+        + id [PK]: integer, NOT NULL, AUTOINCREMENT
+        ==
+        question_text: varchar(200), NOT NULL
+        pub_date: datetime, NOT NULL
+}
+
+entity "polls_choice" {
+        + id [PK]: integer, NOT NULL, AUTOINCREMENT
+        ==
+        choice_text: varchar(200), NOT NULL
+        votes: integer, NOT NULL,
+        question_id [FK(polls_question, id)] [indexed]: integer, NOT NULL
+}
+
+polls_question --{ polls_choice
+
+@enduml
